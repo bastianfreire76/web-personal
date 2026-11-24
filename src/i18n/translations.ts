@@ -11,6 +11,7 @@ export const translations = {
     nav: {
       label: 'Navegación principal',
       about: 'Sobre mí',
+      tech: 'Tecnologías',
       projects: 'Proyectos',
       contact: 'Contacto',
       openMenu: 'Abrir menú',
@@ -32,8 +33,51 @@ export const translations = {
     },
     about: {
       title: 'Sobre mí',
+      subtitle: 'Quién soy y en qué me enfoco.',
       description:
         'Ingeniero Civil Informático (Universidad de Valparaíso) enfocado en automatización y DevOps. Trabajo con Python, PowerShell, Docker y GitHub Actions. Actualmente aprendiendo AWS.',
+      facts: {
+        education: 'Formación',
+        educationValue: 'Ingeniería Civil Informática · Universidad de Valparaíso',
+        focus: 'Enfoque',
+        focusValue: 'Automatización y DevOps',
+        learning: 'Aprendiendo',
+        learningValue: 'AWS',
+      },
+      focusTitle: 'Áreas de trabajo',
+      areas: {
+        automation: {
+          title: 'Automatización',
+          text: 'Scripts en Python y PowerShell para eliminar tareas repetitivas.',
+        },
+        cicd: {
+          title: 'CI/CD',
+          text: 'Pipelines con GitHub Actions para compilar, probar y publicar.',
+        },
+        containers: {
+          title: 'Contenedores',
+          text: 'Entornos reproducibles y laboratorios con Docker.',
+        },
+        cloud: {
+          title: 'Cloud',
+          text: 'Aprendiendo AWS para llevar todo esto a la nube.',
+        },
+      },
+    },
+    tech: {
+      title: 'Tecnologías',
+      subtitle: 'Las herramientas con las que trabajo día a día.',
+      learning: 'Aprendiendo',
+      categories: {
+        language: 'Lenguaje',
+        frontend: 'Frontend',
+        backend: 'Backend',
+        automation: 'Automatización',
+        devops: 'DevOps',
+        cloud: 'Cloud',
+        data: 'Datos',
+        desktop: 'Escritorio',
+      },
     },
     projects: {
       title: 'Proyectos',
@@ -76,6 +120,7 @@ export const translations = {
     nav: {
       label: 'Main navigation',
       about: 'About',
+      tech: 'Tech stack',
       projects: 'Projects',
       contact: 'Contact',
       openMenu: 'Open menu',
@@ -97,8 +142,51 @@ export const translations = {
     },
     about: {
       title: 'About me',
+      subtitle: 'Who I am and what I focus on.',
       description:
         'Computer Engineer (Universidad de Valparaíso) focused on automation and DevOps. I work with Python, PowerShell, Docker and GitHub Actions. Currently learning AWS.',
+      facts: {
+        education: 'Education',
+        educationValue: 'Computer Engineering · Universidad de Valparaíso',
+        focus: 'Focus',
+        focusValue: 'Automation and DevOps',
+        learning: 'Learning',
+        learningValue: 'AWS',
+      },
+      focusTitle: 'What I work on',
+      areas: {
+        automation: {
+          title: 'Automation',
+          text: 'Python and PowerShell scripts that remove repetitive work.',
+        },
+        cicd: {
+          title: 'CI/CD',
+          text: 'GitHub Actions pipelines to build, test and release.',
+        },
+        containers: {
+          title: 'Containers',
+          text: 'Reproducible environments and labs with Docker.',
+        },
+        cloud: {
+          title: 'Cloud',
+          text: 'Learning AWS to take all of this to the cloud.',
+        },
+      },
+    },
+    tech: {
+      title: 'Tech stack',
+      subtitle: 'The tools I work with every day.',
+      learning: 'Learning',
+      categories: {
+        language: 'Language',
+        frontend: 'Frontend',
+        backend: 'Backend',
+        automation: 'Automation',
+        devops: 'DevOps',
+        cloud: 'Cloud',
+        data: 'Data',
+        desktop: 'Desktop',
+      },
     },
     projects: {
       title: 'Projects',

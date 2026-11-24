@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Mail } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import Section from './Section'
 import { socials } from '../data/socials'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -8,37 +9,33 @@ export default function Contact() {
   const { t } = useLanguage()
 
   return (
-    <section id="contacto" className="relative overflow-hidden px-4 py-24 sm:px-6">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-violet-50 via-white to-cyan-50 dark:from-violet-950/30 dark:via-slate-950 dark:to-cyan-950/20"
-      />
-
+    <Section id="contacto" index={4} eyebrow={t.nav.contact} title={t.contact.title} variant="gradient">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-2xl text-center"
+        className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-8 text-center shadow-xl shadow-violet-500/5 backdrop-blur sm:p-12 dark:border-slate-800 dark:bg-slate-900/80"
       >
-        <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-slate-900 sm:text-4xl dark:text-white">
-          {t.contact.title}
-        </h2>
-        <p className="mt-4 text-base text-slate-600 sm:text-lg dark:text-slate-300">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500"
+        />
+        <p className="text-base text-slate-600 sm:text-lg dark:text-slate-300">
           {t.contact.description}
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <a
             href={`mailto:${socials.email}`}
-            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition-transform hover:-translate-y-0.5"
+            className="flex max-w-full items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition-transform hover:-translate-y-0.5"
           >
-            <Mail size={18} aria-hidden="true" />
-            {socials.email}
+            <Mail size={18} aria-hidden="true" className="shrink-0" />
+            <span className="truncate">{socials.email}</span>
           </a>
         </div>
 
-        <div className="mt-8 flex items-center justify-center gap-4">
+        <div className="mt-6 flex items-center justify-center gap-4">
           <a
             href={socials.github}
             target="_blank"
@@ -59,6 +56,6 @@ export default function Contact() {
           </a>
         </div>
       </motion.div>
-    </section>
+    </Section>
   )
 }

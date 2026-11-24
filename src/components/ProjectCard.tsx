@@ -41,7 +41,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -6 }}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-6 shadow-sm transition-shadow hover:shadow-xl hover:shadow-violet-500/10 dark:bg-slate-900 ${
+      className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-6 shadow-sm transition-shadow hover:shadow-xl hover:shadow-violet-500/10 dark:bg-slate-950/70 ${
         featured
           ? 'border-violet-300 dark:border-violet-500/40'
           : 'border-slate-200 dark:border-slate-800'

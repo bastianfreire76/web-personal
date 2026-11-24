@@ -16,11 +16,32 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const { t } = useLanguage()
 
+  const [active, setActive] = useState<string>('')
+
   const navLinks = [
     { href: '#sobre-mi', label: t.nav.about },
+    { href: '#tecnologias', label: t.nav.tech },
     { href: '#proyectos', label: t.nav.projects },
     { href: '#contacto', label: t.nav.contact },
   ]
+
+  // Resalta en el menú la sección que se está viendo.
+  useEffect(() => {
+    const sections = ['sobre-mi', 'tecnologias', 'proyectos', 'contacto']
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    sections.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -54,7 +75,12 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+              aria-current={active === link.href ? 'true' : undefined}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                active === link.href
+                  ? 'bg-violet-100 text-violet-700 dark:bg-violet-500/15 dark:text-violet-300'
+                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white'
+              }`}
             >
               {link.label}
             </a>
@@ -95,7 +121,12 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+                  aria-current={active === link.href ? 'true' : undefined}
+                  className={`rounded-lg px-3 py-2 text-sm font-medium ${
+                    active === link.href
+                      ? 'bg-violet-100 text-violet-700 dark:bg-violet-500/15 dark:text-violet-300'
+                      : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'
+                  }`}
                 >
                   {link.label}
                 </a>
