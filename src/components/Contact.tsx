@@ -2,8 +2,11 @@ import { motion } from 'framer-motion'
 import { Mail } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { socials } from '../data/socials'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Contact() {
+  const { t } = useLanguage()
+
   return (
     <section id="contacto" className="relative overflow-hidden px-4 py-24 sm:px-6">
       <div
@@ -19,11 +22,10 @@ export default function Contact() {
         className="mx-auto max-w-2xl text-center"
       >
         <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-slate-900 sm:text-4xl dark:text-white">
-          ¿Hablamos?
+          {t.contact.title}
         </h2>
         <p className="mt-4 text-base text-slate-600 sm:text-lg dark:text-slate-300">
-          Estoy abierto a nuevas oportunidades, colaboraciones y proyectos interesantes.
-          Escríbeme directamente o encuéntrame en mis redes.
+          {t.contact.description}
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -41,7 +43,7 @@ export default function Contact() {
             href={socials.github}
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="Perfil de GitHub"
+            aria-label={t.contact.githubLabel}
             className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-600 transition-colors hover:border-violet-300 hover:text-violet-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-violet-400 dark:hover:text-violet-300"
           >
             <FaGithub size={20} aria-hidden="true" />
@@ -50,7 +52,7 @@ export default function Contact() {
             href={socials.linkedin}
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="Perfil de LinkedIn"
+            aria-label={t.contact.linkedinLabel}
             className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-600 transition-colors hover:border-cyan-300 hover:text-cyan-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-cyan-400 dark:hover:text-cyan-300"
           >
             <FaLinkedin size={20} aria-hidden="true" />

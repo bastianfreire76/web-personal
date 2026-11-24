@@ -2,13 +2,9 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
+import LanguageToggle from './LanguageToggle'
 import { socials } from '../data/socials'
-
-const NAV_LINKS = [
-  { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#contacto', label: 'Contacto' },
-]
+import { useLanguage } from '../i18n/LanguageContext'
 
 interface NavbarProps {
   theme: 'light' | 'dark'
@@ -18,6 +14,13 @@ interface NavbarProps {
 export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { t } = useLanguage()
+
+  const navLinks = [
+    { href: '#sobre-mi', label: t.nav.about },
+    { href: '#proyectos', label: t.nav.projects },
+    { href: '#contacto', label: t.nav.contact },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -35,7 +38,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
       }`}
     >
       <nav
-        aria-label="Navegación principal"
+        aria-label={t.nav.label}
         className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6"
       >
         <a
@@ -47,7 +50,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -56,17 +59,19 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
               {link.label}
             </a>
           ))}
-          <div className="ml-2">
+          <div className="ml-2 flex items-center gap-2">
+            <LanguageToggle />
             <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           </div>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
             aria-expanded={open}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-slate-700 dark:border-slate-700 dark:text-slate-200"
           >
@@ -85,7 +90,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
             className="overflow-hidden border-t border-slate-200 bg-white md:hidden dark:border-slate-800 dark:bg-slate-950"
           >
             <div className="flex flex-col gap-1 px-4 py-3">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}

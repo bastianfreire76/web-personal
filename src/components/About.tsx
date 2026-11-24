@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion'
 import { skills } from '../data/skills'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function About() {
+  const { t } = useLanguage()
+
   return (
     <section id="sobre-mi" className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
       <motion.div
@@ -12,14 +15,10 @@ export default function About() {
         className="mx-auto max-w-3xl text-center"
       >
         <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-slate-900 sm:text-4xl dark:text-white">
-          Sobre mí
+          {t.about.title}
         </h2>
         <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
-          Soy Ingeniero Civil Informático apasionado por construir software que resuelve
-          problemas concretos, desde interfaces cuidadas hasta la infraestructura que las
-          sostiene. Disfruto trabajar de punta a punta: diseñar la arquitectura, escribir el
-          backend, dar forma a la experiencia de usuario y automatizar todo lo que se pueda en
-          el camino.
+          {t.about.description}
         </p>
       </motion.div>
 

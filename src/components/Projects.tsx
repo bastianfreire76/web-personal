@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
 import { projects } from '../data/projects'
 import ProjectCard from './ProjectCard'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Projects() {
+  const { t } = useLanguage()
+
   return (
     <section
       id="proyectos"
@@ -17,16 +20,16 @@ export default function Projects() {
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-slate-900 sm:text-4xl dark:text-white">
-            Proyectos
+            {t.projects.title}
           </h2>
           <p className="mt-4 text-base text-slate-600 sm:text-lg dark:text-slate-300">
-            Algunas cosas que he construido, de principio a fin.
+            {t.projects.subtitle}
           </p>
         </motion.div>
 
         <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+            <ProjectCard key={project.title.es} project={project} index={index} />
           ))}
         </div>
       </div>

@@ -2,8 +2,11 @@ import { motion } from 'framer-motion'
 import { ArrowDown, Mail } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { socials } from '../data/socials'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export default function Hero() {
+  const { t } = useLanguage()
+
   return (
     <section
       id="inicio"
@@ -37,7 +40,7 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-4 inline-block rounded-full border border-violet-200 bg-violet-50 px-4 py-1.5 text-sm font-medium text-violet-700 dark:border-violet-500/30 dark:bg-violet-500/10 dark:text-violet-300"
         >
-          👋 Hola, soy
+          {t.hero.greeting}
         </motion.p>
 
         <motion.h1
@@ -55,7 +58,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-4 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-cyan-500 bg-clip-text text-xl font-semibold text-transparent sm:text-2xl"
         >
-          {socials.role}
+          {t.hero.role}
         </motion.h2>
 
         <motion.p
@@ -64,7 +67,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="mx-auto mt-6 max-w-2xl text-balance text-base text-slate-600 sm:text-lg dark:text-slate-300"
         >
-          {socials.tagline}
+          {t.hero.tagline}
         </motion.p>
 
         <motion.div
@@ -103,7 +106,7 @@ export default function Hero() {
 
       <a
         href="#sobre-mi"
-        aria-label="Ir a la sección Sobre mí"
+        aria-label={t.hero.scrollToAbout}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 transition-colors hover:text-violet-500 dark:text-slate-600 dark:hover:text-violet-400"
       >
         <motion.span

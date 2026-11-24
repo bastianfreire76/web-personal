@@ -1,5 +1,6 @@
 import { Moon, Sun } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '../i18n/LanguageContext'
 
 interface ThemeToggleProps {
   theme: 'light' | 'dark'
@@ -8,12 +9,13 @@ interface ThemeToggleProps {
 
 export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
   const isDark = theme === 'dark'
+  const { t } = useLanguage()
 
   return (
     <button
       type="button"
       onClick={onToggle}
-      aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+      aria-label={isDark ? t.theme.toLight : t.theme.toDark}
       aria-pressed={isDark}
       className="relative flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition-colors hover:border-violet-300 hover:text-violet-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-violet-400 dark:hover:text-violet-300"
     >
